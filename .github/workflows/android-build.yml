@@ -25,12 +25,12 @@ env:
 jobs:
   build:
     name: Build ${{ github.event.inputs.build_type || 'debug' }} APK
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
@@ -79,7 +79,7 @@ jobs:
           gradle $TASK -PbuildNumber=${{ github.run_number }} --stacktrace
 
       - name: Upload APK
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: WirdKu-Android-APK
           path: app/build/outputs/apk/**/*.apk
