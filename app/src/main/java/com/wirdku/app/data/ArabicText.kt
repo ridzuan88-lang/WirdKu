@@ -6,6 +6,8 @@ object ArabicText {
         c in '\u064B'..'\u065F' || c == '\u0670' || c in '\u06D6'..'\u06ED' ||
             c in '\u0610'..'\u061A'
 
+    fun hasArabicLetter(t: String) = t.any { it in '\u0621'..'\u064A' || it == '\u0671' }
+
     fun isTatweelOrMarkOnly(token: String) = token.isNotEmpty() && token.all { isCombiningMark(it) }
 
     /** Split into tokens; a token consisting only of marks (stray) is merged into the previous word. */
@@ -14,6 +16,7 @@ object ArabicText {
         val out = ArrayList<String>()
         for (t in raw) {
             if (isTatweelOrMarkOnly(t) && out.isNotEmpty()) out[out.lastIndex] = out.last() + t
+            else if (!hasArabicLetter(t) && out.isNotEmpty()) out[out.lastIndex] = out.last() + " " + t
             else out.add(t)
         }
         return out

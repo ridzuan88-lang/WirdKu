@@ -38,4 +38,10 @@ class ArabicTextTest {
         assertTrue('\u0651' in m)
         assertTrue('\u0670' in m)
     }
+
+    @Test fun verseMarkerMergesIntoPreviousWord() {
+        val w = ArabicText.segment("حَسْبِي ❁ فَنِعْمَ")
+        assertEquals(2, w.size)
+        assertEquals(listOf('ح', 'س', 'ب', 'ي'), ArabicText.baseLetters(w[0]))
+    }
 }

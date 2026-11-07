@@ -202,7 +202,7 @@ private fun FullAudioBar(vm: AppViewModel, col: WirdCollection) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun WordSheet(vm: AppViewModel, w: Word, arabicFont: FontFamily) {
+fun WordSheet(vm: AppViewModel, w: Word, arabicFont: FontFamily, timedPlay: ((Float, Boolean) -> Unit)? = null) {
     val mk = remember { vm.repo.makhraj() }
     val hasAudio = vm.repo.assetExists(w.audio)
     val hasSlow = vm.repo.assetExists(w.slowAudio)
@@ -214,15 +214,20 @@ fun WordSheet(vm: AppViewModel, w: Word, arabicFont: FontFamily) {
             Text(w.arabic, fontFamily = arabicFont, fontSize = 56.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         }
         Spacer(Modifier.height(8.dp))
-        if (hasAudio) {
+        if (hasAudio || timedPlay != null) {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button({ vm.audio.play(w.audio!!, 1f, repeat) }) { Text("Dengar Sebutan") }
-                OutlinedButton({ if (hasSlow) vm.audio.play(w.slowAudio!!, 1f, repeat) else vm.audio.play(w.audio!!, 0.6f, repeat) }) { Text("Dengar Perlahan") }
+                Button({ if (hasAudio) vm.audio.play(w.audio!!, 1f, repeat) else timedPlay?.invoke(1f, repeat) }) { Text("Dengar Sebutan") }
+                OutlinedButton({
+                    if (hasSlow) vm.audio.play(w.slowAudio!!, 1f, repeat)
+                    else if (hasAudio) vm.audio.play(w.audio!!, 0.6f, repeat)
+                    else timedPlay?.invoke(0.6f, repeat)
+                }) { Text("Dengar Perlahan") }
                 FilterChip(repeat, { repeat = !repeat; vm.audio.setRepeat(repeat) }, { Text("Ulang Sebutan") })
             }
-            if (w.verified.not()) Text("Rakaman ini belum ditanda sebagai disahkan.", fontSize = 12.sp)
+            if (!hasAudio) Text("Sebutan diambil daripada rakaman penuh anda pada masa yang anda tanda sendiri.", fontSize = 12.sp)
+            else if (w.verified.not()) Text("Rakaman ini belum ditanda sebagai disahkan.", fontSize = 12.sp)
         } else {
-            Text("Audio perkataan belum tersedia", color = MaterialTheme.colorScheme.error)
+            Text("Audio perkataan belum tersedia. Gunakan Mod Penanda Masa dalam skrin Buku untuk menanda perkataan ini.", color = MaterialTheme.colorScheme.error)
         }
         Spacer(Modifier.height(16.dp))
         Text("Makhraj", style = MaterialTheme.typography.titleMedium, color = Gold)

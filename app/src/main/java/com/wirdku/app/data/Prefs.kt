@@ -50,6 +50,23 @@ class Prefs(private val ctx: Context) {
     val position: Flow<ReadingPos> = ctx.store.data.map { ReadingPos(it[K.posC] ?: "", it[K.posI] ?: 0) }
     suspend fun savePosition(c: String, i: Int) = ctx.store.edit { it[K.posC] = c; it[K.posI] = i }
 
+    private fun parseMarks(s: String): Map<String, Long> = s.split(";").mapNotNull { e ->
+        val kv = e.split("=")
+        if (kv.size == 2) kv[1].toLongOrNull()?.let { kv[0] to it } else null
+    }.toMap()
+
+    fun marks(cid: String): Flow<Map<String, Long>> =
+        ctx.store.data.map { parseMarks(it[stringPreferencesKey("marks_$cid")] ?: "") }
+
+    suspend fun setMark(cid: String, id: String, ms: Long) = ctx.store.edit { p ->
+        val key = stringPreferencesKey("marks_$cid")
+        val m = parseMarks(p[key] ?: "").toMutableMap()
+        m[id] = ms
+        p[key] = m.entries.joinToString(";") { "${it.key}=${it.value}" }
+    }
+
+    suspend fun clearMarks(cid: String) = ctx.store.edit { it.remove(stringPreferencesKey("marks_$cid")) }
+
     val tasbih: Flow<Tasbih> = ctx.store.data.map { Tasbih(it[K.tCount] ?: 0, it[K.tTarget] ?: 33, it[K.tLabel] ?: "Zikir") }
     suspend fun saveTasbih(t: Tasbih) = ctx.store.edit { it[K.tCount] = t.count; it[K.tTarget] = t.target; it[K.tLabel] = t.label }
 }

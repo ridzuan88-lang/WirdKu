@@ -22,6 +22,7 @@ data class Section(
     val translation: String = "",
     val explanation: String = "",
     val audio: String? = null,
+    val page: Int = 0,
     val words: List<Word> = emptyList(),
 )
 
@@ -34,6 +35,7 @@ data class WirdCollection(
     val active: Boolean = true,
     val audio: String? = null,
     val sourceStatus: String = "",
+    val pages: List<String> = emptyList(),
     val sections: List<Section> = emptyList(),
 )
 

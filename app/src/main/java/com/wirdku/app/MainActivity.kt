@@ -30,6 +30,9 @@ class MainActivity : ComponentActivity() {
                         ReaderScreen(vm, nav, e.arguments?.getString("cid") ?: "hizib_bahr",
                             e.arguments?.getString("idx")?.toIntOrNull() ?: 0)
                     }
+                    composable("book/{cid}") { e ->
+                        BookScreen(vm, nav, e.arguments?.getString("cid") ?: "hizib_bahr")
+                    }
                     composable("bookmarks") { BookmarksScreen(vm, nav) }
                     composable("tasbih") { TasbihScreen(vm, nav) }
                     composable("settings") { SettingsScreen(vm, nav) }

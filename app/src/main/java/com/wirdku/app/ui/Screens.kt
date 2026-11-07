@@ -57,11 +57,18 @@ fun HomeScreen(vm: AppViewModel, nav: NavController) {
                     Text(c.title, color = Gold, style = MaterialTheme.typography.headlineSmall)
                     Text(c.arabicTitle, color = androidx.compose.ui.graphics.Color.White, fontSize = 32.sp, fontFamily = NaskhFamily)
                     Spacer(Modifier.height(8.dp))
-                    Button({ nav.navigate("read/${c.id}/0") }, colors = ButtonDefaults.buttonColors(containerColor = Gold)) { Text("Buka Bacaan") }
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        if (c.pages.isNotEmpty())
+                            Button({ nav.navigate("book/${c.id}") }, colors = ButtonDefaults.buttonColors(containerColor = Gold)) { Text("Buka Buku") }
+                        OutlinedButton({ nav.navigate("read/${c.id}/0") }) { Text("Bacaan Teks", color = androidx.compose.ui.graphics.Color.White) }
+                    }
                 }
             }
             if (c.sourceStatus == "PLACEHOLDER")
                 Text("Nota: teks Hizib Bahr sebenar belum dimasukkan. Sila tambah fail sumber (lihat README).",
+                    Modifier.padding(top = 8.dp), style = MaterialTheme.typography.bodySmall)
+            if (c.sourceStatus == "UNVERIFIED_WEB_SOURCE" || c.sourceStatus == "USER_BOOK_TRANSCRIPTION")
+                Text("Nota: halaman buku ialah imbasan buku anda. Teks yang boleh diketik ialah salinan taipan dan belum disemak - bandingkan dengan halaman buku.",
                     Modifier.padding(top = 8.dp), style = MaterialTheme.typography.bodySmall)
         }
         if (pos.collectionId.isNotBlank()) {
