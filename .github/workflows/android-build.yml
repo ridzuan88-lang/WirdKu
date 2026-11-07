@@ -1,0 +1,100 @@
+name: Android APK Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: "Build type"
+        type: choice
+        options: [debug, release]
+        default: debug
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BUILD_TYPE: ${{ github.event.inputs.build_type || 'debug' }}
+
+jobs:
+  build:
+    name: Build ${{ github.event.inputs.build_type || 'debug' }} APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up Gradle (with caching)
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.9
+
+      - name: Install SDK packages
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Unit tests
+        run: gradle testDebugUnitTest -PbuildNumber=${{ github.run_number }} --stacktrace
+
+      - name: Android lint
+        run: gradle lintDebug -PbuildNumber=${{ github.run_number }}
+        continue-on-error: true
+
+      - name: Decode keystore (release only, if secrets exist)
+        id: ks
+        if: env.BUILD_TYPE == 'release'
+        env:
+          KS_B64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KS_B64" ]; then
+            echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+            echo "path=$RUNNER_TEMP/release.jks" >> "$GITHUB_OUTPUT"
+            echo "signed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::No signing secrets - release APK will be UNSIGNED"
+          fi
+
+      - name: Build APK
+        env:
+          SIGNING_KEYSTORE_PATH: ${{ steps.ks.outputs.path }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        run: |
+          if [ "$BUILD_TYPE" = "release" ]; then TASK=assembleRelease; else TASK=assembleDebug; fi
+          gradle $TASK -PbuildNumber=${{ github.run_number }} --stacktrace
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: WirdKu-Android-APK
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Build summary
+        if: always()
+        run: |
+          {
+            echo "## WirdKu build"
+            echo "- Build type: $BUILD_TYPE"
+            echo "- Build number: ${{ github.run_number }}"
+            echo "- Commit: ${{ github.sha }}"
+            echo "- Signed: ${{ steps.ks.outputs.signed || 'n/a (debug is debug-signed)' }}"
+            echo "### APK files"
+            find app/build/outputs/apk -name '*.apk' -printf '- %f (%s bytes)\n' 2>/dev/null || echo "- none"
+          } >> "$GITHUB_STEP_SUMMARY"
