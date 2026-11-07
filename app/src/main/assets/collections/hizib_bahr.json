@@ -1,0 +1,21 @@
+{
+ "id": "hizib_bahr",
+ "title": "Hizib Bahr",
+ "arabicTitle": "حزب البحر",
+ "active": true,
+ "description": "Koleksi Hizib Bahr. Teks sebenar belum dimasukkan - menunggu fail sumber daripada pengguna.",
+ "audio": null,
+ "sourceStatus": "PLACEHOLDER",
+ "sections": [
+  {
+   "id": "section_001",
+   "title": "CONTOH SAHAJA (bukan Hizib Bahr)",
+   "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+   "rumi": "",
+   "translation": "",
+   "explanation": "",
+   "audio": null,
+   "words": []
+  }
+ ]
+}

@@ -1,0 +1,282 @@
+{
+ "version": 1,
+ "reviewStatus": "UNVERIFIED - perlu semakan guru tajwid yang bertauliah sebelum digunakan sebagai rujukan",
+ "letters": [
+  {
+   "char": "ا",
+   "name": "Alif",
+   "group": "Al-Jauf (rongga mulut)",
+   "makhraj": "Bunyi mengalir dari rongga mulut dan kerongkong tanpa ada titik sentuhan; alif ialah huruf mad.",
+   "tip": "Buka mulut dan panjangkan bunyi 'aaa' dengan lancar mengikut kadar mad.",
+   "verified": false
+  },
+  {
+   "char": "ء",
+   "name": "Hamzah",
+   "group": "Al-Halq (kerongkong)",
+   "makhraj": "Dari pangkal kerongkong (paling dalam, hampir dengan dada).",
+   "tip": "Mulakan bunyi dengan hentian ringan di kerongkong, seperti permulaan 'a' yang tegas.",
+   "verified": false
+  },
+  {
+   "char": "ه",
+   "name": "Ha",
+   "group": "Al-Halq (kerongkong)",
+   "makhraj": "Dari pangkal kerongkong, bersama hamzah.",
+   "tip": "Hembus nafas lembut seperti 'ha' dalam 'hah', tanpa menekan.",
+   "verified": false
+  },
+  {
+   "char": "ع",
+   "name": "'Ain",
+   "group": "Al-Halq (kerongkong)",
+   "makhraj": "Dari tengah kerongkong.",
+   "tip": "Sempitkan kerongkong dan keluarkan bunyi dari dalam; jangan ganti dengan 'a' biasa.",
+   "verified": false
+  },
+  {
+   "char": "ح",
+   "name": "Ha (Hha)",
+   "group": "Al-Halq (kerongkong)",
+   "makhraj": "Dari tengah kerongkong, bersama 'ain.",
+   "tip": "Hembus nafas dari tengah kerongkong dengan bunyi serak halus, bukan 'ha' biasa.",
+   "verified": false
+  },
+  {
+   "char": "غ",
+   "name": "Ghain",
+   "group": "Al-Halq (kerongkong)",
+   "makhraj": "Dari hujung kerongkong (paling dekat dengan mulut).",
+   "tip": "Getarkan hujung kerongkong seperti berkumur ringan.",
+   "verified": false
+  },
+  {
+   "char": "خ",
+   "name": "Kha",
+   "group": "Al-Halq (kerongkong)",
+   "makhraj": "Dari hujung kerongkong, bersama ghain.",
+   "tip": "Hembus bunyi geseran di hujung kerongkong seperti mendengkur halus.",
+   "verified": false
+  },
+  {
+   "char": "ق",
+   "name": "Qaf",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Pangkal lidah (paling belakang) bersentuh dengan lelangit lembut di atasnya.",
+   "tip": "Angkat pangkal lidah ke belakang dan sebut dengan tebal, lebih dalam daripada kaf.",
+   "verified": false
+  },
+  {
+   "char": "ك",
+   "name": "Kaf",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Pangkal lidah, sedikit lebih ke hadapan daripada qaf, dengan lelangit.",
+   "tip": "Sebut nipis dan ringan, tidak setebal qaf.",
+   "verified": false
+  },
+  {
+   "char": "ج",
+   "name": "Jim",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Tengah lidah dengan lelangit keras di atasnya.",
+   "tip": "Letakkan tengah lidah ke lelangit, lepaskan bunyi 'j' dengan jelas.",
+   "verified": false
+  },
+  {
+   "char": "ش",
+   "name": "Syin",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Tengah lidah dengan lelangit keras.",
+   "tip": "Sebut desis 'sy' yang menyebar di dalam mulut.",
+   "verified": false
+  },
+  {
+   "char": "ي",
+   "name": "Ya",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Tengah lidah dengan lelangit keras (juga huruf mad apabila disebut panjang selepas baris kasrah).",
+   "tip": "Naikkan tengah lidah ke lelangit, bibir tidak bulat.",
+   "verified": false
+  },
+  {
+   "char": "ض",
+   "name": "Dhad",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Tepi lidah (salah satu atau kedua-dua belah) dengan geraham atas.",
+   "tip": "Tekan tepi lidah ke geraham dan sebut tebal; huruf ini sukar, berlatih dengan guru.",
+   "verified": false
+  },
+  {
+   "char": "ل",
+   "name": "Lam",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung tepi lidah dengan gusi gigi atas (depan).",
+   "tip": "Sentuh gusi dengan hujung lidah; sebut ringan kecuali pada lafaz Allah mengikut hukumnya.",
+   "verified": false
+  },
+  {
+   "char": "ن",
+   "name": "Nun",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan gusi gigi atas, sedikit lebih bawah daripada lam.",
+   "tip": "Sentuh hujung lidah ke gusi; bunyi ghunnah keluar juga melalui hidung apabila bersabdu.",
+   "verified": false
+  },
+  {
+   "char": "ر",
+   "name": "Ra",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan gusi, lebih ke belakang daripada nun, bahagian belakang lidah sedikit masuk ke belakang.",
+   "tip": "Getarkan hujung lidah ringan; tebal atau nipis mengikut hukum tafkhim/tarqiq.",
+   "verified": false
+  },
+  {
+   "char": "ط",
+   "name": "Tha (Tho)",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan pangkal gigi seri atas.",
+   "tip": "Sebut tebal dengan pangkal lidah terangkat; tidak sama dengan ta.",
+   "verified": false
+  },
+  {
+   "char": "د",
+   "name": "Dal",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan pangkal gigi seri atas.",
+   "tip": "Sebut nipis dan jelas.",
+   "verified": false
+  },
+  {
+   "char": "ت",
+   "name": "Ta",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan pangkal gigi seri atas.",
+   "tip": "Sebut nipis tanpa hembusan berlebihan.",
+   "verified": false
+  },
+  {
+   "char": "ص",
+   "name": "Sad",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan hujung gigi seri bawah (bunyi desis).",
+   "tip": "Desis tebal dengan lidah terangkat.",
+   "verified": false
+  },
+  {
+   "char": "س",
+   "name": "Sin",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan hujung gigi seri bawah (bunyi desis).",
+   "tip": "Desis nipis seperti 's' biasa.",
+   "verified": false
+  },
+  {
+   "char": "ز",
+   "name": "Zai",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan hujung gigi seri bawah (bunyi desis).",
+   "tip": "Seperti sin tetapi dengan getaran suara.",
+   "verified": false
+  },
+  {
+   "char": "ظ",
+   "name": "Zha",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan hujung gigi seri atas.",
+   "tip": "Julurkan hujung lidah sedikit dan sebut tebal.",
+   "verified": false
+  },
+  {
+   "char": "ذ",
+   "name": "Dzal",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan hujung gigi seri atas.",
+   "tip": "Julurkan hujung lidah sedikit dan sebut nipis dengan getaran suara.",
+   "verified": false
+  },
+  {
+   "char": "ث",
+   "name": "Tsa",
+   "group": "Al-Lisan (lidah)",
+   "makhraj": "Hujung lidah dengan hujung gigi seri atas.",
+   "tip": "Julurkan hujung lidah sedikit dan sebut desis nipis tanpa getaran suara.",
+   "verified": false
+  },
+  {
+   "char": "ف",
+   "name": "Fa",
+   "group": "Asy-Syafatan (dua bibir)",
+   "makhraj": "Hujung gigi seri atas dengan bahagian dalam bibir bawah.",
+   "tip": "Sentuh gigi atas ke bibir bawah dan hembus.",
+   "verified": false
+  },
+  {
+   "char": "ب",
+   "name": "Ba",
+   "group": "Asy-Syafatan (dua bibir)",
+   "makhraj": "Dua bibir bertemu rapat.",
+   "tip": "Rapatkan bibir kemudian lepaskan bunyi 'b'.",
+   "verified": false
+  },
+  {
+   "char": "م",
+   "name": "Mim",
+   "group": "Asy-Syafatan (dua bibir)",
+   "makhraj": "Dua bibir bertemu; ghunnah juga melalui rongga hidung (Al-Khaisyum) apabila bersabdu.",
+   "tip": "Rapatkan bibir; apabila bersabdu tahan dengung kira-kira dua harakat.",
+   "verified": false
+  },
+  {
+   "char": "و",
+   "name": "Wau",
+   "group": "Asy-Syafatan (dua bibir)",
+   "makhraj": "Dua bibir dibulatkan tanpa bertemu rapat (juga huruf mad apabila selepas baris dhammah).",
+   "tip": "Bulatkan bibir ke hadapan; mad apabila dipanjangkan.",
+   "verified": false
+  }
+ ],
+ "marks": [
+  {
+   "mark": "ّ",
+   "name": "Tasydid (Syaddah)",
+   "note": "Huruf disebut dua kali: satu mati, satu hidup. Tekan huruf dengan jelas.",
+   "verified": false
+  },
+  {
+   "mark": "ْ",
+   "name": "Sukun",
+   "note": "Huruf mati tanpa baris; sebut berhenti ringkas pada huruf itu.",
+   "verified": false
+  },
+  {
+   "mark": "ً",
+   "name": "Tanwin Fathah",
+   "note": "Bunyi 'an' pada hujung kata.",
+   "verified": false
+  },
+  {
+   "mark": "ٌ",
+   "name": "Tanwin Dhammah",
+   "note": "Bunyi 'un' pada hujung kata.",
+   "verified": false
+  },
+  {
+   "mark": "ٍ",
+   "name": "Tanwin Kasrah",
+   "note": "Bunyi 'in' pada hujung kata.",
+   "verified": false
+  },
+  {
+   "mark": "ٓ",
+   "name": "Maddah",
+   "note": "Tanda sebutan dipanjangkan (mad).",
+   "verified": false
+  },
+  {
+   "mark": "ٰ",
+   "name": "Alif khanjariah",
+   "note": "Alif kecil: baris fathah dipanjangkan seperti alif.",
+   "verified": false
+  }
+ ]
+}
